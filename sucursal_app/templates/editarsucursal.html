@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<div class="row"> <!-- Fila en editar-->
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar sucursal</h2>
+        <!-- Aqui codigo tarjeta -->
+
+            <div class="card">
+                <div class="card-body">
+                <form action="/editarsucursal/" method="POST"> {% csrf_token %} <!-- Falta action -->
+                    <div class="form-group">
+                    <input type="text" id="txtidsucursal" name="txtidsucursal" minlength="1" maxlength="6" value="{{missucursals.id_sucursal}}" class="form-control" readonly required>
+                    </div>
+                    <div class="form-group py-3">
+                    <input type="text" id="txtdireccion" name="txtdireccion" value="{{missucursals.direccion}}" maxlength="45" class="form-control" required>
+                    </div>
+                    <div class="form-group py-2">
+                    <input type="text" id="txthorario" name="txthorario" maxlength="100" value="{{missucursals.horario}}" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtnombre" name="txtnombre" maxlength="45" value="{{missucursals.nombre}}" class="form-control" readonly required>
+                        </div>
+                        <div class="form-group py-3">
+                        <input type="text" id="txttelefono" name="txttelefono" value="{{missucursals.telefono}}" maxlength="15" class="form-control" required>
+                        </div>
+                        <div class="form-group py-2">
+                        <input type="text" id="txtemail" name="txtemail" maxlength="45" value="{{missucursals.email}}" class="form-control" required>
+                        </div>
+                        <div class="form-group py-2">
+                        <input type="text" id="txtcodigo_postal" name="txtcodigo_postal" maxlength="45" value="{{missucursals.codigo_postal}}" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group py-2">
+                        <button type="submit" class="btn btn-primary">Guardar sucursal</button>
+                        </div>
+                </form>
+                </div>
+            </div> <!-- Tarjeta -->
+
+
+        <!-- Aqui codigo tarjeta -->
+
+    
+    </div> 
+
+</div> <!-- Fila en editar-->
+
+
+{% endblock %}

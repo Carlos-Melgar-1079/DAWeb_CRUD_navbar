@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<div class="row"> <!-- Fila en editar-->
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar empleado</h2>
+        <!-- Aqui codigo tarjeta -->
+
+            <div class="card">
+                <div class="card-body">
+                <form action="/editarempleado/" method="POST"> {% csrf_token %} <!-- Falta action -->
+                    <div class="form-group">
+                    <input type="text" id="txtidempleados" name="txtidempleados" minlength="1" maxlength="6" value="{{misempleados.id_empleados}}" class="form-control" readonly required>
+                    </div>
+                    <div class="form-group py-2">
+                    <input type="text" id="txtnombre" name="txtnombre" value="{{misempleados.nombre}}" maxlength="45" class="form-control" required>
+                    </div>
+                    <div class="form-group py-2">
+                    <input type="text" id="txtapellido" name="txtapellido" maxlength="100" value="{{misempleados.apellido}}" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txttelefono" name="txttelefono" maxlength="45" value="{{misempleados.telefono}}" class="form-control" readonly required>
+                        </div>
+                        <div class="form-group py-2">
+                        <input type="text" id="txthorario" name="txthorario" value="{{misempleados.horario}}" maxlength="15" class="form-control" required>
+                        </div>
+                        <div class="form-group py-2">
+                        <input type="text" id="txtemail" name="txtemail" maxlength="45" value="{{misempleados.email}}" class="form-control" required>
+                        </div>
+                        <div class="form-group py-2">
+                        <input type="text" id="txtsalario" name="txtsalario" maxlength="45" value="{{misempleados.salario}}" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group py-2">
+                        <button type="submit" class="btn btn-primary">Guardar empleado</button>
+                        </div>
+                </form>
+                </div>
+            </div> <!-- Tarjeta -->
+
+
+        <!-- Aqui codigo tarjeta -->
+
+    
+    </div> 
+
+</div> <!-- Fila en editar-->
+
+
+{% endblock %}

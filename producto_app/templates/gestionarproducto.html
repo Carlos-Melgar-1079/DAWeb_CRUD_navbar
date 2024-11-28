@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block cuerpo %} 
+{% load static %}
+ <div class="row"> <!-- La fila -->
+
+   <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"> <!-- Columna izquierda -->
+    <h1>productos</h1>
+    <div class="card">
+      <div class="card-body">
+        <form action="registrarproducto/" method="POST"> {% csrf_token %} <!-- Falta action -->
+          <div class="form-group">
+            <input type="text" id="txtidproducto" name="txtidproducto" placeholder="id_producto" minlength="1" maxlength="6" class="form-control" required>
+          </div>
+          <div class="form-group py-3">
+            <input type="text" id="txtnombre" name="txtnombre" placeholder="Nombre " maxlength="45" class="form-control" required>
+          </div>
+          <div class="form-group py-2">
+            <input type="text" id="txtprecio" name="txtprecio" placeholder="precio" maxlength="100" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txttipo" name="txttipo" placeholder="tipo" maxlength="45" class="form-control" required>
+          </div>
+          <div class="form-group py-3">
+            <input type="text" id="txtdescribcion" name="txtdescribcion" placeholder="describcion" maxlength="15" class="form-control" required>
+          </div>
+          <div class="form-group py-2">
+            <input type="text" id="txtlote" name="txtlote" placeholder="lote" maxlength="45" class="form-control" required>
+          </div>
+          <div class="form-group py-2">
+            <input type="text" id="txtmarca" name="txtmarca" placeholder="marca" maxlength="45" class="form-control" required>
+          </div>
+          
+          <div class="form-group py-2">
+            <button type="submit" class="btn btn-primary">Guardar productos</button>
+          </div>
+
+        </form>
+      </div>
+    </div> <!-- Tarjeta -->
+   </div> <!-- Columna izquierda -->
+
+   <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"> <!-- Columna derecha -->
+   <h1>Listado de productos</h1>
+   <img class="w-50" src="{% static 'img/productos.png' %}" alt="nava" width="100" height="100"/>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">id_producto</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">precio</th>
+        <th scope="col">tipo</th>
+        <th scope="col">describcion</th>
+        <th scope="col">lote</th>
+        <th scope="col">marca</th>
+        
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      {% for m in misproducto %}
+      
+      <tr>
+        <td> {{forloop.counter}} </td>
+        <td> {{m.id_producto}} </td>
+        <td> {{m.nombre}} </td>
+        <td> {{m.precio}} </td>
+        <td> {{m.tipo}} </td>
+        <td> {{m.describcion}} </td>
+        <td> {{m.lote}} </td>
+        <td> {{m.marca}} </td>
+        
+        <td> <a href="seleccionarproducto/{{m.id_producto}}" class="btn btn-info"> Editar</a> </td> <!-- Falta -->
+        <td> <a href="borrarproducto/{{m.id_producto}}" class="btn btn-danger"> Borrar</a> </td> <!-- Falta -->
+      </tr>
+      
+      
+      
+      {% endfor %}
+      
+    </tbody>
+  </table>
+
+ </div> <!-- Columna derecha -->
+
+ 
+
+{% endblock %}
